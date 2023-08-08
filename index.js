@@ -1,12 +1,12 @@
-const summonEntries = () => {
+const myEntries = () => {
     let entries = localStorage.getItem("user-Entries");
     return entries ? JSON.parse(entries) : [];
   };
   
-  let userEntries = summonEntries();
+  let userEntries = myEntries();
   
-  const printEntries = () => {
-    const entries = summonEntries();
+  const keepEntries = () => {
+    const entries = myEntries();
   
     const tableEntries = entries
         .map(
@@ -47,11 +47,11 @@ const summonEntries = () => {
   
     userEntries.push(entry);
     localStorage.setItem("user-Entries", JSON.stringify(userEntries));
-    printEntries();
+    keepEntries();
     userForm.reset();
   };
   
   let userForm = document.getElementById("form");
   userForm.addEventListener("submit", uploadForm);
   
-  printEntries();
+  keepEntries();
